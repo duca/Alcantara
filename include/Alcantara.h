@@ -2,6 +2,7 @@
 #define ALCANTARA_H
 
 #include <QMainWindow>
+#include <QProcess>
 #include <QWidget>
 #include <QtCore/QFileSystemWatcher>
 #include <QtCore/QDirIterator>
@@ -26,6 +27,8 @@ class Alcantara : public QMainWindow
     private:
     Ui::Alcantara ui;
     QList<QString> usrApps, usrAppsFullPath;
+    QList<QProcess*> processList;
+    QWidget *parent;
 
     void fillList();
 

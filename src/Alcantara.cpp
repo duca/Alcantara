@@ -88,10 +88,15 @@ void Alcantara::openApp() //SLOT
     QListWidgetItem* currentSelection = this->ui.appsList->item(0);
     QString currentString = currentSelection->text();
     qDebug()<< currentString;
+    QProcess *newProcess = new QProcess(parent);
+    newProcess->start(currentString);
+    processList.append(newProcess);
 }
 void Alcantara::openAppItem(QListWidgetItem* item) //SLOT
 {
     QString currentString = item->text();
     qDebug()<< currentString;
-
+    QProcess *newProcess = new QProcess(parent);
+    newProcess->start(currentString);
+    processList.append(newProcess);
 }
