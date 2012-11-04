@@ -88,15 +88,41 @@ void Alcantara::openApp() //SLOT
     QListWidgetItem* currentSelection = this->ui.appsList->item(0);
     QString currentString = currentSelection->text();
     qDebug()<< currentString;
-    QProcess *newProcess = new QProcess(parent);
-    newProcess->start(currentString);
-    processList.append(newProcess);
+    this->launch(currentString);
+
+
 }
 void Alcantara::openAppItem(QListWidgetItem* item) //SLOT
 {
     QString currentString = item->text();
     qDebug()<< currentString;
+    this->launch(currentString);
+
+}
+void Alcantara::launch(QString programName) //SLOT
+{
+    //first step is to clean the list
+    this->cleanProcesslist();
+
+    //Creates a new process to launch the desired program
     QProcess *newProcess = new QProcess(parent);
-    newProcess->start(currentString);
-    processList.append(newProcess);
+    newProcess->start(programName);
+
+    //Apend the new QProcess to the list of opened process
+    this->processList.append(newProcess);
+}
+
+void Alcantara::cleanProcesslist()
+{
+    QMutableListIterator<QProcess*> procIt(this->processList);
+
+    while(procIt.hasNext())
+    {
+        //check Status and remove if not running
+        if(procIt.next()->state() == QProcess::NotRunning)
+        {
+            procIt.remove();
+        }
+    }
+
 }

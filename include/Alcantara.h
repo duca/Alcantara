@@ -24,6 +24,8 @@ class Alcantara : public QMainWindow
         void searchName(QString name);
         void openApp();
         void openAppItem(QListWidgetItem* item);
+        void launch(QString programName); //SLOT
+        void cleanProcesslist();
     private:
     Ui::Alcantara ui;
     QList<QString> usrApps, usrAppsFullPath;
