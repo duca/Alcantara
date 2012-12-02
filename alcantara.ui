@@ -6,12 +6,24 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>152</width>
-    <height>388</height>
+    <width>214</width>
+    <height>400</height>
    </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
   </property>
   <property name="windowTitle">
    <string>Alcantara</string>
+  </property>
+  <property name="windowOpacity">
+   <double>1.000000000000000</double>
+  </property>
+  <property name="autoFillBackground">
+   <bool>true</bool>
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QLineEdit" name="appSearchEntry">
@@ -19,9 +31,18 @@
      <rect>
       <x>10</x>
       <y>10</y>
-      <width>131</width>
+      <width>191</width>
       <height>24</height>
      </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="layoutDirection">
+     <enum>Qt::LeftToRight</enum>
     </property>
    </widget>
    <widget class="QListWidget" name="appsList">
@@ -29,8 +50,8 @@
      <rect>
       <x>10</x>
       <y>40</y>
-      <width>131</width>
-      <height>301</height>
+      <width>191</width>
+      <height>311</height>
      </rect>
     </property>
     <property name="mouseTracking">
@@ -70,7 +91,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>152</width>
+     <width>214</width>
      <height>22</height>
     </rect>
    </property>

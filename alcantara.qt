@@ -1,1 +1,1 @@
-qmake -project && qmake Alcantara.pro
+qmake Alcantara.pro

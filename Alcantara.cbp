@@ -31,16 +31,16 @@
 			<Add library="QtGui" />
 			<Add directory="/usr/lib" />
 		</Linker>
-		<Unit filename="Makefile" />
+		<Unit filename="Alcantara.pro" />
 		<Unit filename="include/Alcantara.h">
 			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
+		<Unit filename="include/singleInstance.h" />
 		<Unit filename="main.cpp">
 			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
-		<Unit filename="src/Alcantara.cpp">
-			<Option target="&lt;{~None~}&gt;" />
-		</Unit>
+		<Unit filename="src/Alcantara.cpp" />
+		<Unit filename="src/singleInstance.cpp" />
 		<Extensions>
 			<envvars />
 			<code_completion />
