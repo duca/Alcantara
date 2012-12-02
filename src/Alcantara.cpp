@@ -1,15 +1,18 @@
 #include "../include/Alcantara.h"
-
+#include <QMutex>
+#include <QWaitCondition>
 Alcantara::Alcantara(QWidget *parent, Qt::WFlags flags)
 	: QMainWindow(parent, flags)
 {
-    //QMainWindow *window = new QMainWindow;
+    QMainWindow *window = new QMainWindow;
+
     ui.setupUi(this);
     //ctor
     fillList();
     QObject::connect(ui.appSearchEntry, SIGNAL(textChanged(QString)), this, SLOT(searchName(QString)));
     QObject::connect(ui.appsList, SIGNAL(itemActivated(QListWidgetItem*)), this, SLOT(openAppItem(QListWidgetItem*)));
     QObject::connect(ui.appSearchEntry, SIGNAL(returnPressed()), this, SLOT(openApp()));
+    QObject::connect(this, SIGNAL(selectedApp()), this, SLOT(hide()));
 }
 
 Alcantara::~Alcantara()
@@ -87,7 +90,6 @@ void Alcantara::openApp() //SLOT
 {
     QListWidgetItem* currentSelection = this->ui.appsList->item(0);
     QString currentString = currentSelection->text();
-    qDebug()<< currentString;
     this->launch(currentString);
 
 
@@ -95,7 +97,6 @@ void Alcantara::openApp() //SLOT
 void Alcantara::openAppItem(QListWidgetItem* item) //SLOT
 {
     QString currentString = item->text();
-    qDebug()<< currentString;
     this->launch(currentString);
 
 }
@@ -105,11 +106,23 @@ void Alcantara::launch(QString programName) //SLOT
     this->cleanProcesslist();
 
     //Creates a new process to launch the desired program
-    QProcess *newProcess = new QProcess(parent);
+    QProcess *newProcess = new QProcess(this);
+    //qDebug()<< programName;
     newProcess->start(programName);
+
+    newProcess->waitForStarted();
+    this->hide(); //esconde a janela
+    	/*Usa um mutex e um waitCondition (espera uma dada condi��o) */
+        QMutex Pmutex;
+        QWaitCondition waitCondition;
+	//while(this->poraSerial->bytesAvailable() < 1){
+		Pmutex.lock();
+		waitCondition.wait(&Pmutex,5000);
+		Pmutex.unlock();
 
     //Apend the new QProcess to the list of opened process
     this->processList.append(newProcess);
+    emit selectedApp();
 }
 
 void Alcantara::cleanProcesslist()
@@ -126,3 +139,10 @@ void Alcantara::cleanProcesslist()
     }
 
 }
+
+void Alcantara::clearAppSearchEntry()
+{
+	//qDebug()<< "clearing appSearchEntry";
+	ui.appSearchEntry->clear();
+}
+

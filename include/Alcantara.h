@@ -2,15 +2,16 @@
 #define ALCANTARA_H
 
 #include <QMainWindow>
+#include <QMenu>
 #include <QProcess>
 #include <QWidget>
 #include <QtCore/QFileSystemWatcher>
 #include <QtCore/QDirIterator>
 #include <QtCore/QDebug>
-#include <Qt/qglobal.h>
 #include <QtCore/QString>
 #include <QtCore/QList>
 #include <QtCore/QListIterator>
+#include <QSystemTrayIcon>
 #include "../ui_alcantara.h"
 class Alcantara : public QMainWindow
 {
@@ -18,6 +19,9 @@ class Alcantara : public QMainWindow
     public:
         Alcantara(QWidget *parent = 0, Qt::WFlags flags = 0);
         virtual ~Alcantara();
+
+	public slots:
+		void clearAppSearchEntry();
     protected:
 
     private slots:
@@ -26,14 +30,15 @@ class Alcantara : public QMainWindow
         void openAppItem(QListWidgetItem* item);
         void launch(QString programName); //SLOT
         void cleanProcesslist();
+
+    signals:
+        void selectedApp();
     private:
-    Ui::Alcantara ui;
-    QList<QString> usrApps, usrAppsFullPath;
-    QList<QProcess*> processList;
-    QWidget *parent;
-
-    void fillList();
-
+        Ui::Alcantara ui;
+        QList<QString> usrApps, usrAppsFullPath;
+        QList<QProcess*> processList;
+        QWidget *parent;
+        void fillList();
 };
 
 #endif // ALCANTARA_H
