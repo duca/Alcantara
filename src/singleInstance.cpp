@@ -24,7 +24,7 @@ bool singleInstance::checkFirstInstance()
 		This function checkes wether this is the first instance or not emitting an adequate signal
 	*/
 	 //qDebug()<< "Checking for new instances" ;
-	 QDBusInterface iface(SERVICE_NAME, "/checker", "", QDBusConnection::sessionBus());
+	 QDBusInterface iface(SERVICE_NAME, "/", "", QDBusConnection::sessionBus());
 
 	 //if this is the first instance and a second calls, the method showWindow instructs
 	 //the first one to unhide.

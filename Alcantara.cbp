@@ -32,6 +32,7 @@
 			<Add directory="/usr/lib" />
 		</Linker>
 		<Unit filename="Alcantara.pro" />
+		<Unit filename="Makefile" />
 		<Unit filename="include/Alcantara.h">
 			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
