@@ -3,7 +3,7 @@
 ######################################################################
 
 TEMPLATE = app
-TARGET =
+TARGET = Alcantara
 DEPENDPATH += . include src
 INCLUDEPATH += . include
 CONFIG += qdbus
@@ -11,3 +11,4 @@ CONFIG += qdbus
 HEADERS += include/Alcantara.h include/singleInstance.h
 FORMS += alcantara.ui
 SOURCES += main.cpp src/Alcantara.cpp src/singleInstance.cpp
+CONFIG += qdbus
