@@ -1171,7 +1171,8 @@ moc_singleInstance.o: moc_singleInstance.cpp
 
 ####### Install
 
-install:   FORCE
+install:
+	cp Alcantara $(DESTDIR)
 
 uninstall:   FORCE
 
