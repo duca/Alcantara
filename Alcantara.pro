@@ -12,3 +12,6 @@ HEADERS += include/Alcantara.h include/singleInstance.h
 FORMS += alcantara.ui
 SOURCES += main.cpp src/Alcantara.cpp src/singleInstance.cpp
 CONFIG += qdbus
+TARGET.path = $$PREFIX
+TARGET.files = Alcantara
+INSTALLS += TARGET
