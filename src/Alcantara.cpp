@@ -35,22 +35,62 @@ void Alcantara::fillList()
 //    QListIterator<QString> deskIter(deskApps);
 //
 //    bool contain = false;
-    //read all usr/bin applications name
-    QDirIterator usrAppsIter("/usr/bin");
-    while(usrAppsIter.hasNext())
-    {
-        QString usrEntry = usrAppsIter.fileName();
-        if(!usrEntry.isEmpty())
-        {
-            if( usrEntry != "." && usrEntry != "..")
-            {
-                this->ui.appsList->addItem(usrEntry);
-                this->usrApps.append(usrEntry);
-                this->usrAppsFullPath.append(usrAppsIter.path());
-            }
-        }
-        usrAppsIter.next();
-    }
+	QStringList env = QProcess::systemEnvironment();
+
+	QListIterator<QString>  envIter(env);
+
+	QStringList allPath;
+	while(envIter.hasNext())
+	{
+		QString v = envIter.next();
+		if(v.contains("/usr/bin"))
+		{
+			QString path = v.remove(0, 5);
+			allPath = path.split(":");
+
+			if(allPath.count() < 1) //something went wrong so fallback to default location
+			{
+				allPath.append("/usr/bin");
+				allPath.append("/usr/local/bin");
+			}
+			else
+			{
+				QStringList allPath;
+			}
+			allPath.removeDuplicates();
+
+			//Iterate through all directories from PATH:
+			QListIterator<QString> binIter(allPath);
+			while(binIter.hasNext())
+			{
+				//read all applications name
+				QDirIterator usrAppsIter(binIter.next());
+				while(usrAppsIter.hasNext())
+				{
+					QString usrEntry = usrAppsIter.fileName(); //get the file name
+					if(!usrEntry.isEmpty())
+					{
+						if( usrEntry != "." && usrEntry != "..")
+						{
+							this->usrApps.append(usrEntry);
+							this->usrAppsFullPath.append(usrAppsIter.path());
+						}
+					}
+					usrAppsIter.next();
+				}
+			}
+		}
+	}
+	this->usrApps.removeDuplicates();
+	this->usrAppsFullPath.removeDuplicates();
+
+	//Finally append items to widget
+	QListIterator<QString> itemIter(this->usrApps);
+	while(itemIter.hasNext())
+	{
+		this->ui.appsList->addItem(itemIter.next());
+	}
+
 }
 
 void Alcantara::searchName(QString name)
@@ -122,6 +162,8 @@ void Alcantara::launch(QString programName) //SLOT
 
     //Apend the new QProcess to the list of opened process
     this->processList.append(newProcess);
+
+    this->fillList(); //update list
     emit selectedApp();
 }
 

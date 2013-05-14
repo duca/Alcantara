@@ -9,6 +9,8 @@ you could also be typing a fragment from the middle or end of the name. In this 
 Also it keeps track of opened programs by keeping their pid's (and names) and my intention is to enable, through dbus, the retrieval of
 these informations. 
 
+Alcantara searches all directories listed in your user PATH variable. It's a per-user list, so if some other user of your machine does not have a particular bin place listed, he or she will not have it listed by Alcantara.
+
 
 Dependencies
 =============
@@ -25,7 +27,7 @@ The executable file is named Alcantara and at the moment, there are two options 
 
 make
 
-2- In the directory type
+2- In the directory type (if you also have qt5 installed, use qmake-qt4 instead of qmake)
 qmake -makefile Alcantara.pro 
 
 and a Makefile will be generated using the correct paths for each include and lib files needed. After the end of the process execute the previous instruction

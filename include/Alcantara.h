@@ -35,7 +35,7 @@ class Alcantara : public QMainWindow
         void selectedApp();
     private:
         Ui::Alcantara ui;
-        QList<QString> usrApps, usrAppsFullPath;
+        QStringList usrApps, usrAppsFullPath;
         QList<QProcess*> processList;
         QWidget *parent;
         void fillList();
