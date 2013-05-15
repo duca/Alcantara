@@ -5,6 +5,7 @@
 #include <QMenu>
 #include <QProcess>
 #include <QWidget>
+#include <QKeyEvent>
 #include <QtCore/QFileSystemWatcher>
 #include <QtCore/QDirIterator>
 #include <QtCore/QDebug>
@@ -30,9 +31,11 @@ class Alcantara : public QMainWindow
         void openAppItem(QListWidgetItem* item);
         void launch(QString programName); //SLOT
         void cleanProcesslist();
+        void keyPressEvent(QKeyEvent *e);
 
     signals:
         void selectedApp();
+        void cancelSelection();
     private:
         Ui::Alcantara ui;
         QStringList usrApps, usrAppsFullPath;

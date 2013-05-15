@@ -1,5 +1,6 @@
 #include "../include/Alcantara.h"
 #include <QMutex>
+
 #include <QWaitCondition>
 Alcantara::Alcantara(QWidget *parent, Qt::WFlags flags)
 	: QMainWindow(parent, flags)
@@ -13,6 +14,7 @@ Alcantara::Alcantara(QWidget *parent, Qt::WFlags flags)
     QObject::connect(ui.appsList, SIGNAL(itemActivated(QListWidgetItem*)), this, SLOT(openAppItem(QListWidgetItem*)));
     QObject::connect(ui.appSearchEntry, SIGNAL(returnPressed()), this, SLOT(openApp()));
     QObject::connect(this, SIGNAL(selectedApp()), this, SLOT(hide()));
+    QObject::connect(this, SIGNAL(cancelSelection()), this, SLOT(hide()));
 }
 
 Alcantara::~Alcantara()
@@ -188,3 +190,10 @@ void Alcantara::clearAppSearchEntry()
 	ui.appSearchEntry->clear();
 }
 
+void Alcantara::keyPressEvent(QKeyEvent *e)
+{
+	if(e->key() == Qt::Key_Escape)
+	{
+		emit cancelSelection();
+	}
+}
