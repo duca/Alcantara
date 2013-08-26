@@ -1,8 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'alcantara.ui'
 **
-** Created: Sun May 12 00:30:49 2013
-**      by: Qt User Interface Compiler version 4.8.4
+** Created by: Qt User Interface Compiler version 4.8.5
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -40,12 +39,15 @@ public:
     {
         if (Alcantara->objectName().isEmpty())
             Alcantara->setObjectName(QString::fromUtf8("Alcantara"));
+        Alcantara->setWindowModality(Qt::ApplicationModal);
         Alcantara->resize(214, 400);
         QSizePolicy sizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
         sizePolicy.setHorizontalStretch(0);
         sizePolicy.setVerticalStretch(0);
         sizePolicy.setHeightForWidth(Alcantara->sizePolicy().hasHeightForWidth());
         Alcantara->setSizePolicy(sizePolicy);
+        Alcantara->setFocusPolicy(Qt::NoFocus);
+        Alcantara->setContextMenuPolicy(Qt::DefaultContextMenu);
         Alcantara->setWindowOpacity(1);
         Alcantara->setAutoFillBackground(true);
         actionQuit = new QAction(Alcantara);
@@ -63,8 +65,10 @@ public:
         appSearchEntry->setLayoutDirection(Qt::LeftToRight);
         appsList = new QListWidget(centralwidget);
         appsList->setObjectName(QString::fromUtf8("appsList"));
+        appsList->setEnabled(true);
         appsList->setGeometry(QRect(10, 40, 191, 311));
         appsList->setMouseTracking(true);
+        appsList->setFocusPolicy(Qt::TabFocus);
         appsList->setAcceptDrops(false);
         appsList->setAutoFillBackground(true);
         appsList->setFrameShadow(QFrame::Raised);
@@ -77,7 +81,7 @@ public:
         Alcantara->setCentralWidget(centralwidget);
         menubar = new QMenuBar(Alcantara);
         menubar->setObjectName(QString::fromUtf8("menubar"));
-        menubar->setGeometry(QRect(0, 0, 214, 27));
+        menubar->setGeometry(QRect(0, 0, 214, 21));
         menuQuit = new QMenu(menubar);
         menuQuit->setObjectName(QString::fromUtf8("menuQuit"));
         Alcantara->setMenuBar(menubar);
