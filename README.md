@@ -23,13 +23,14 @@ HOW TO BUILD
 
 The executable file is named Alcantara and at the moment, there are two options to build it
 
-1- In directory type:
+1 - From inside Alcantara directory, type (if you also have qt5 installed, use qmake-qt4 instead of qmake):
 
-make
-
-2- In the directory type (if you also have qt5 installed, use qmake-qt4 instead of qmake)
-qmake -makefile Alcantara.pro 
+qmake -makefile Alcantara.pro PREFIX=/foo/dir (or omit PREFIX for default: /usr/local)
 
 and a Makefile will be generated using the correct paths for each include and lib files needed. After the end of the process execute the previous instruction
+
+2 - After that, just:
+
+ make && make install
 
 
