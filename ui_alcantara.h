@@ -81,7 +81,7 @@ public:
         Alcantara->setCentralWidget(centralwidget);
         menubar = new QMenuBar(Alcantara);
         menubar->setObjectName(QString::fromUtf8("menubar"));
-        menubar->setGeometry(QRect(0, 0, 214, 21));
+        menubar->setGeometry(QRect(0, 0, 214, 25));
         menuQuit = new QMenu(menubar);
         menuQuit->setObjectName(QString::fromUtf8("menuQuit"));
         Alcantara->setMenuBar(menubar);

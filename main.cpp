@@ -10,8 +10,8 @@ int main(int argc, char* argv[])
 
     singleInstance instanceChecker;
     QObject::connect(&instanceChecker, SIGNAL(newInstanceOpened()), &launcher, SLOT(show()));
-    QObject::connect(&instanceChecker, SIGNAL(newInstanceOpened()), &launcher, SLOT(clearAppSearchEntry()));
     QObject::connect(&instanceChecker, SIGNAL(notFirstInstance()), &launcher, SLOT(close())); //it does not end the second instance
+    QObject::connect(&instanceChecker, SIGNAL(newInstanceOpened()), &launcher, SLOT(clearAppSearchEntry()));
 
 	//register a dbus service in case of being the first instance. Otherwise signal the first and exists
     if(instanceChecker.checkFirstInstance())

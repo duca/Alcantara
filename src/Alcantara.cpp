@@ -106,10 +106,13 @@ void Alcantara::searchName(QString name)
     {
         QString usrEntry = usrIter.next();
 
+		if(usrEntry == name){
+			results.prepend(usrEntry);
+		}
         //assume the User usually types the begining of the word
         if(usrEntry.startsWith(name, Qt::CaseInsensitive))
         {
-            results.prepend(usrEntry);
+            results.append(usrEntry);
         }
         //add any other which contains the 'name' segment
         else if(usrEntry.contains(name))
@@ -188,6 +191,7 @@ void Alcantara::clearAppSearchEntry()
 {
 	//qDebug()<< "clearing appSearchEntry";
 	ui.appSearchEntry->clear();
+	ui.appSearchEntry->setFocus();
 }
 
 void Alcantara::keyPressEvent(QKeyEvent *e)
