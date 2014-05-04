@@ -46,7 +46,7 @@ public:
         sizePolicy.setVerticalStretch(0);
         sizePolicy.setHeightForWidth(Alcantara->sizePolicy().hasHeightForWidth());
         Alcantara->setSizePolicy(sizePolicy);
-        Alcantara->setFocusPolicy(Qt::NoFocus);
+        Alcantara->setFocusPolicy(Qt::StrongFocus);
         Alcantara->setContextMenuPolicy(Qt::DefaultContextMenu);
         Alcantara->setWindowOpacity(1);
         Alcantara->setAutoFillBackground(true);
@@ -63,6 +63,7 @@ public:
         sizePolicy1.setHeightForWidth(appSearchEntry->sizePolicy().hasHeightForWidth());
         appSearchEntry->setSizePolicy(sizePolicy1);
         appSearchEntry->setLayoutDirection(Qt::LeftToRight);
+        appSearchEntry->setAutoFillBackground(true);
         appsList = new QListWidget(centralwidget);
         appsList->setObjectName(QString::fromUtf8("appsList"));
         appsList->setEnabled(true);
@@ -81,7 +82,7 @@ public:
         Alcantara->setCentralWidget(centralwidget);
         menubar = new QMenuBar(Alcantara);
         menubar->setObjectName(QString::fromUtf8("menubar"));
-        menubar->setGeometry(QRect(0, 0, 214, 25));
+        menubar->setGeometry(QRect(0, 0, 214, 19));
         menuQuit = new QMenu(menubar);
         menuQuit->setObjectName(QString::fromUtf8("menuQuit"));
         Alcantara->setMenuBar(menubar);

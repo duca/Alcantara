@@ -9,7 +9,7 @@ int main(int argc, char* argv[])
     Alcantara launcher;
 
     singleInstance instanceChecker;
-    QObject::connect(&instanceChecker, SIGNAL(newInstanceOpened()), &launcher, SLOT(show()));
+    QObject::connect(&instanceChecker, SIGNAL(newInstanceOpened()), &launcher, SLOT(showWindow()));
     QObject::connect(&instanceChecker, SIGNAL(notFirstInstance()), &launcher, SLOT(close())); //it does not end the second instance
     QObject::connect(&instanceChecker, SIGNAL(newInstanceOpened()), &launcher, SLOT(clearAppSearchEntry()));
 

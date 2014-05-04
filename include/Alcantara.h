@@ -32,6 +32,7 @@ class Alcantara : public QMainWindow
         void launch(QString programName); //SLOT
         void cleanProcesslist();
         void keyPressEvent(QKeyEvent *e);
+        void showWindow();
 
     signals:
         void selectedApp();

@@ -7,6 +7,8 @@ Alcantara::Alcantara(QWidget *parent, Qt::WFlags flags)
 {
     QMainWindow *window = new QMainWindow;
 
+    this->setWindowFlags(Qt::WindowStaysOnTopHint);
+
     ui.setupUi(this);
     //ctor
     fillList();
@@ -136,9 +138,8 @@ void Alcantara::openApp() //SLOT
     QListWidgetItem* currentSelection = this->ui.appsList->item(0);
     QString currentString = currentSelection->text();
     this->launch(currentString);
-
-
 }
+
 void Alcantara::openAppItem(QListWidgetItem* item) //SLOT
 {
     QString currentString = item->text();
@@ -185,6 +186,13 @@ void Alcantara::cleanProcesslist()
         }
     }
 
+}
+
+
+void Alcantara::showWindow()
+{
+    ui.appSearchEntry->grabKeyboard();
+    this->show();
 }
 
 void Alcantara::clearAppSearchEntry()

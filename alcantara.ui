@@ -20,7 +20,7 @@
    </sizepolicy>
   </property>
   <property name="focusPolicy">
-   <enum>Qt::NoFocus</enum>
+   <enum>Qt::StrongFocus</enum>
   </property>
   <property name="contextMenuPolicy">
    <enum>Qt::DefaultContextMenu</enum>
@@ -52,6 +52,9 @@
     </property>
     <property name="layoutDirection">
      <enum>Qt::LeftToRight</enum>
+    </property>
+    <property name="autoFillBackground">
+     <bool>true</bool>
     </property>
    </widget>
    <widget class="QListWidget" name="appsList">
@@ -110,7 +113,7 @@
      <x>0</x>
      <y>0</y>
      <width>214</width>
-     <height>25</height>
+     <height>19</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuQuit">
